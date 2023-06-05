@@ -10,7 +10,7 @@ const App = () => {
   const [control, setControl] = useState(false);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/todos")
+      .get("https://todolish-server-jubayer1418.vercel.app/todos")
       .then((res) => {
         setTodos(res.data);
         setControl(true);
@@ -31,7 +31,7 @@ const App = () => {
       option,
     };
     axios
-      .post("http://localhost:5000/todos", {
+      .post("https://todolish-server-jubayer1418.vercel.app/todos", {
         todoData,
       })
       .then(() => {
@@ -44,7 +44,7 @@ const App = () => {
   };
   const handleUpdate = (id) => {
     axios
-      .get(`http://localhost:5000/todos/${id}`)
+      .get(`https://todolish-server-jubayer1418.vercel.app/todos/${id}`)
       .then((res) => {
         setUpdate(res.data);
       })
@@ -65,9 +65,12 @@ const App = () => {
       option,
     };
     axios
-      .put(`http://localhost:5000/todos/${update._id}`, {
-        todoData,
-      })
+      .put(
+        `https://todolish-server-jubayer1418.vercel.app/todos/${update._id}`,
+        {
+          todoData,
+        }
+      )
       .then(() => {
         setControl(false);
         setUpdate(todoData);
@@ -81,7 +84,7 @@ const App = () => {
   const handleDelete = (id) => {
     console.log("clio", id);
     axios
-      .delete(`http://localhost:5000/todos/${id}`)
+      .delete(`https://todolish-server-jubayer1418.vercel.app/todos/${id}`)
       .then(() => setControl(false))
 
       .catch((error) => {
